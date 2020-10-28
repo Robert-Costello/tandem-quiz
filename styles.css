@@ -38,3 +38,11 @@
   text-align: center;
   margin: 20px auto;
 }
+
+p {
+  opacity: 0.6;
+}
+
+.radio:focus {
+  box-shadow: none;
+}

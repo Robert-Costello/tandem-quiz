@@ -2,9 +2,10 @@ const qList = document.querySelector('.question-list');
 const choices = document.querySelector('.choices');
 const start = document.querySelector('.start');
 const submitAns = document.querySelector('.new-question');
-const quiz = new Quiz(qList);
 const p = document.querySelector('p');
+const currScore = document.querySelector('.score');
 
+const quiz = new Quiz(qList);
 quiz.getQs();
 
 submitAns.addEventListener('submit', (e) => {
@@ -19,6 +20,7 @@ submitAns.addEventListener('submit', (e) => {
   // console.log(submitAns.elements["answer"].value);
   if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
     quiz.score++;
+    currScore.innerText = `Your Score: ${quiz.score}`;
   }
   console.log(quiz.score);
   if(quiz.questions.length) {
