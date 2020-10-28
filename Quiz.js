@@ -12,12 +12,12 @@ class Quiz {
     return response.json().then((data) => {
       let qCount = 0, index = data.length-1;
 
-      while (index > 0) {
+      // FISHER YATES SHUFFLE QUESTIONS
+      for (let index = data.length-1; index > 0; index--) {
         const j = Math.floor(Math.random() * index);
         const temp = data[index];
         data[index] = data[j];
         data[j] = temp;
-        index--;
       }
 
       while (qCount < 10) {
@@ -37,6 +37,14 @@ class Quiz {
     `;
     this.list.innerHTML = html;
     answers.push(q.correct, ...q.incorrect);
+
+    // FISHER YATES SHUFFLE ANSWERS
+    for(let i = answers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * i);
+      const temp = answers[i];
+      answers[i] = answers[j];
+      answers[j] = temp;
+    }
     choices.innerHTML = `<div class="input-group-append">
             <input type="submit" class="btn submit-ans" id="submit-ans" value="submit"/>
             </div>`;
