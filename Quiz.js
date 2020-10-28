@@ -49,7 +49,7 @@ class Quiz {
             <input type="submit" class="btn submit-ans" id="submit-ans" value="submit"/>
             </div>`;
     answers.forEach((ans) => {
-      let html = `<input type="radio" id="message" class="form-control" name="answer" value=${ans.replace(
+      let html = `<input type="radio" class="form-control radio" name="answer" value=${ans.replace(
         / /g,
         '-'
       )}>${ans}</input>`;
