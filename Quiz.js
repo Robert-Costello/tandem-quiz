@@ -8,19 +8,23 @@ class Quiz {
   }
 
   async getQs() {
-    const response = await fetch('Apprentice_TandemFor400_Data.json');
-    return response.json()
-    .then(data => {
-      let qCount = 0;
+    const response = await fetch('Apprentice_TandemFor400_Data.json')
+    return response.json().then((data) => {
+      let qCount = 0, index = data.length-1;
 
-      while(qCount < 10) {
-        let index = Math.floor(Math.random() * 21);
-        this.questions.push(data[index])
-        qCount++;
+      while (index > 0) {
+        const j = Math.floor(Math.random() * index);
+        const temp = data[index];
+        data[index] = data[j];
+        data[j] = temp;
+        index--;
       }
 
-      console.log(this.questions);
-    });
+      while (qCount < 10) {
+        this.questions.push(data[qCount]);
+        qCount++;
+      }
+    })
   }
 
   render() {
@@ -36,10 +40,12 @@ class Quiz {
     choices.innerHTML = `<div class="input-group-append">
             <input type="submit" class="btn submit-ans" id="submit-ans" value="submit"/>
             </div>`;
-    answers.forEach(ans => {
-      let html = `<input type="radio" id="message" class="form-control" name="answer" value=${ans.replace(/ /g, '-')}>${ans}</input>`
+    answers.forEach((ans) => {
+      let html = `<input type="radio" id="message" class="form-control" name="answer" value=${ans.replace(
+        / /g,
+        '-'
+      )}>${ans}</input>`;
       choices.innerHTML += html;
-      console.log(choices)
     })
   }
 }
