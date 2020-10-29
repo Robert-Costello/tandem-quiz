@@ -39,4 +39,5 @@ start.addEventListener('click', (e) => {
   quiz.render();
   start.classList.add('d-none');
   p.classList.remove('d-none');
+  currScore.classList.remove('d-none');
 })

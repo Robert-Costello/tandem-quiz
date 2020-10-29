@@ -1,0 +1,23 @@
+{
+  "name": "tandem_quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Questions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robert-Costello/tandem-quiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robert-Costello/tandem-quiz/issues"
+  },
+  "homepage": "https://github.com/Robert-Costello/tandem-quiz#readme",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
