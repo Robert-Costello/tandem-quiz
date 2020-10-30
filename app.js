@@ -4,6 +4,7 @@ const start = document.querySelector('.start');
 const submitAns = document.querySelector('.new-question');
 const p = document.querySelector('p');
 const currScore = document.querySelector('.score');
+const playAgain = document.querySelector('.play-again');
 let quiz;
 let scoreColor = 'text-danger';
 
@@ -45,7 +46,7 @@ submitAns.addEventListener('submit', (e) => {
       else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
       currScore.innerText = `You Scored ${quiz.score} / 10!`;
       currScore.classList.add('h1', `${scoreColor}`);
-      setTimeout(() => location.reload(), 3000);
+      playAgain.classList.remove('d-none');
     }
   }
 
@@ -62,7 +63,7 @@ submitAns.addEventListener('submit', (e) => {
       else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
       currScore.innerText = `You Scored ${quiz.score} / 10!`;
       currScore.classList.add('h1', `${scoreColor}`);
-      setTimeout(() => location.reload(), 3000);
+      playAgain.classList.remove('d-none');
     }
   }
 
@@ -74,4 +75,10 @@ start.addEventListener('click', (e) => {
   start.classList.add('d-none');
   p.classList.remove('d-none');
   currScore.classList.remove('d-none');
+})
+
+
+playAgain.addEventListener('click', e => {
+  e.preventDefault();
+  location.reload()
 })
