@@ -4,34 +4,68 @@ const start = document.querySelector('.start');
 const submitAns = document.querySelector('.new-question');
 const p = document.querySelector('p');
 const currScore = document.querySelector('.score');
+let quiz;
+let scoreColor = 'text-danger';
 
-const quiz = new Quiz(qList);
-quiz.getQs();
+const newGame = () => {
+  quiz = new Quiz(qList);
+  quiz.getQs();
+  console.log("New Game!");
+}
+
+newGame();
 
 submitAns.addEventListener('submit', (e) => {
   e.preventDefault();
   const answers = document.getElementsByName('answer');
-  let selected;
+  let selected ="";
   for (var i = 0; i < answers.length; i++) {
     if (answers[i].checked) {
       selected = answers[i].value;
     }
   }
-  // console.log(submitAns.elements["answer"].value);
-  if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
+  console.log(selected);
+
+
+  // PROMPT USER TO SELECT AN ANSWER IF ONE ISN'T SELECTED
+  if(!selected.length) alert("Please choose an answer");
+
+  // INCREMENT SCORE AND UPDATE UI IF SELECTED IS CORRECT
+  else if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
     quiz.score++;
     currScore.innerText = `Your Score: ${quiz.score}`;
-  }
-  console.log(quiz.score);
-  if(quiz.questions.length) {
+    if(quiz.questions.length) {
+      quiz.render();
+    }
 
-    quiz.render();
+    // DISPLAY SCORE IF THERE ARE NO MORE QUESTION IN CURRENT QUIZ CLASS
+    else {
+      currScore.classList.remove(`${scoreColor}`);
+      if(quiz.score > 7) scoreColor = 'text-success';
+      else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
+      currScore.innerText = `You Scored ${quiz.score} / 10!`;
+      currScore.classList.add('h1', `${scoreColor}`);
+      setTimeout(() => location.reload(), 3000);
+    }
   }
 
+  // UPDATE UI IF SELECTED IS INCORRECT
   else {
-    alert(`You Scored ${quiz.score} / 10!`);
-    location.reload();
+    if(quiz.questions.length) {
+      quiz.render();
+    }
+
+    // DISPLAY SCORE IF THERE ARE NO MORE QUESTION IN CURRENT QUIZ CLASS
+    else {
+      currScore.classList.remove(`${scoreColor}`);
+      if(quiz.score > 7) scoreColor = 'text-success';
+      else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
+      currScore.innerText = `You Scored ${quiz.score} / 10!`;
+      currScore.classList.add('h1', `${scoreColor}`);
+      setTimeout(() => location.reload(), 3000);
+    }
   }
+
 })
 
 start.addEventListener('click', (e) => {
