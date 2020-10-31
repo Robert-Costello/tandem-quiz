@@ -78,5 +78,6 @@ p {
 
 .score {
   margin: 30px auto;
-  opacity: .8;
+  opacity: .7;
+  color:#43d9be;
 }

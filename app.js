@@ -1,3 +1,4 @@
+const questionWindow = document.querySelector('.question-window');
 const qList = document.querySelector('.question-list');
 const choices = document.querySelector('.choices');
 const start = document.querySelector('.start');
@@ -11,31 +12,27 @@ let scoreColor = 'text-danger';
 const newGame = () => {
   quiz = new Quiz(qList);
   quiz.getQs();
-  console.log("New Game!");
-}
+};
 
 newGame();
 
 submitAns.addEventListener('submit', (e) => {
   e.preventDefault();
   const answers = document.getElementsByName('answer');
-  let selected ="";
+  let selected = '';
   for (var i = 0; i < answers.length; i++) {
     if (answers[i].checked) {
       selected = answers[i].value;
     }
   }
-  console.log(selected);
-
 
   // PROMPT USER TO SELECT AN ANSWER IF ONE ISN'T SELECTED
-  if(!selected.length) alert("Please choose an answer");
-
+  if (!selected.length) alert('Please choose an answer');
   // INCREMENT SCORE AND UPDATE UI IF SELECTED IS CORRECT
   else if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
     quiz.score++;
     currScore.innerText = `Correct Answers: ${quiz.score}`;
-    if(quiz.questions.length) {
+    if (quiz.questions.length) {
       quiz.render();
     }
 
@@ -47,7 +44,7 @@ submitAns.addEventListener('submit', (e) => {
 
   // UPDATE UI IF SELECTED IS INCORRECT
   else {
-    if(quiz.questions.length) {
+    if (quiz.questions.length) {
       quiz.render();
     }
 
@@ -56,8 +53,7 @@ submitAns.addEventListener('submit', (e) => {
       quiz.endGame();
     }
   }
-
-})
+});
 
 start.addEventListener('click', (e) => {
   e.preventDefault();
@@ -65,10 +61,9 @@ start.addEventListener('click', (e) => {
   start.classList.add('d-none');
   p.classList.remove('d-none');
   currScore.classList.remove('d-none');
-})
+});
 
-
-playAgain.addEventListener('click', e => {
+playAgain.addEventListener('click', (e) => {
   e.preventDefault();
   location.reload();
-})
+});
