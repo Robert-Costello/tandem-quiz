@@ -2,9 +2,9 @@
   "name": "tandem_quiz",
   "version": "1.0.0",
   "description": "",
-  "main": "Questions.js",
+  "main": "./client/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node Quiz.spec.js",
     "start": "http-server"
   },
   "repository": {
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Robert-Costello/tandem-quiz.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Robert-Costello/tandem-quiz/issues"
   },

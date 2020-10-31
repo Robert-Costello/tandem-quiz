@@ -8,23 +8,21 @@ class Quiz {
   }
   // FETCH QUESTIONS FROM JSON FILE AND ADD 10 TO QUIZ
   async getQs() {
-    const response = await fetch('Apprentice_TandemFor400_Data.json')
+    const response = await fetch('Apprentice_TandemFor400_Data.json');
     return response.json().then((data) => {
-      let qCount = 0, index = data.length-1;
+      let qCount = 0,
+        index = data.length - 1;
 
       // FISHER-YATES SHUFFLE QUESTIONS
-      for (let index = data.length-1; index > 0; index--) {
+      for (let index = data.length - 1; index > 0; index--) {
         const j = Math.floor(Math.random() * index);
         const temp = data[index];
         data[index] = data[j];
         data[j] = temp;
       }
-
-      while (qCount < 10) {
-        this.questions.push(data[qCount]);
-        qCount++;
-      }
-    })
+      // GRAB 10 QUESTIONS TO ASK
+      this.questions.push(...data.slice(0, 10));
+    });
   }
 
   render() {
@@ -39,7 +37,7 @@ class Quiz {
     answers.push(q.correct, ...q.incorrect);
 
     // FISHER-YATES SHUFFLE ANSWERS
-    for(let i = answers.length - 1; i > 0; i--) {
+    for (let i = answers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * i);
       const temp = answers[i];
       answers[i] = answers[j];
@@ -54,17 +52,18 @@ class Quiz {
         '-'
       )}>${ans}</input></div>`;
       choices.innerHTML += html;
-    })
+    });
   }
 
   endGame() {
-    const grade = quiz.score / 10 * 100;
-    currScore.classList.remove(`${scoreColor}`);
-    if(quiz.score > 7) scoreColor = 'text-success';
-    else if(quiz.score <= 7 && quiz.score >= 5) scoreColor = 'text-warning';
+    const grade = (quiz.score / 10) * 100;
+    currScore.classList.remove('h4', `${scoreColor}`);
+    if (quiz.score > 7) scoreColor = 'text-success';
+    else if (quiz.score <= 7 && quiz.score >= 5) scoreColor = 'text-warning';
     currScore.innerText = `You Scored ${grade}%!`;
     currScore.classList.add('h1', `${scoreColor}`);
     playAgain.classList.remove('d-none');
     submitAns.classList.add('d-none');
+    questionWindow.classList.add('d-none');
   }
 }
