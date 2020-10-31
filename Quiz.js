@@ -31,7 +31,7 @@ class Quiz {
     const answers = [];
     const q = this.questions.pop();
     this.correctAnswer = q.correct;
-    const html = `<li class='list-group-item'>
+    const html = `<li class='list-group-item h3'>
     <span class='prompt'>${q.question} </span>
     </li>
     `;
@@ -49,11 +49,22 @@ class Quiz {
             <input type="submit" class="btn submit-ans" id="submit-ans" value="submit"/>
             </div>`;
     answers.forEach((ans) => {
-      let html = `<input type="radio" class="form-control radio" name="answer" value=${ans.replace(
+      let html = `<div class="choice"><input type="radio" class="form-control radio" id="radio" name="answer" value=${ans.replace(
         / /g,
         '-'
-      )}>${ans}</input>`;
+      )}>${ans}</input></div>`;
       choices.innerHTML += html;
     })
+  }
+
+  endGame() {
+    const grade = quiz.score / 10 * 100;
+    currScore.classList.remove(`${scoreColor}`);
+    if(quiz.score > 7) scoreColor = 'text-success';
+    else if(quiz.score <= 7 && quiz.score >= 5) scoreColor = 'text-warning';
+    currScore.innerText = `You Scored ${grade}%!`;
+    currScore.classList.add('h1', `${scoreColor}`);
+    playAgain.classList.remove('d-none');
+    submitAns.classList.add('d-none');
   }
 }

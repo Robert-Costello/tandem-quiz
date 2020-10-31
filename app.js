@@ -34,19 +34,14 @@ submitAns.addEventListener('submit', (e) => {
   // INCREMENT SCORE AND UPDATE UI IF SELECTED IS CORRECT
   else if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
     quiz.score++;
-    currScore.innerText = `Your Score: ${quiz.score}`;
+    currScore.innerText = `Correct Answers: ${quiz.score}`;
     if(quiz.questions.length) {
       quiz.render();
     }
 
-    // DISPLAY SCORE IF THERE ARE NO MORE QUESTION IN CURRENT QUIZ CLASS
+    // DISPLAY SCORE IF THERE ARE NO MORE QUESTIONS IN CURRENT QUIZ CLASS
     else {
-      currScore.classList.remove(`${scoreColor}`);
-      if(quiz.score > 7) scoreColor = 'text-success';
-      else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
-      currScore.innerText = `You Scored ${quiz.score} / 10!`;
-      currScore.classList.add('h1', `${scoreColor}`);
-      playAgain.classList.remove('d-none');
+      quiz.endGame();
     }
   }
 
@@ -56,14 +51,9 @@ submitAns.addEventListener('submit', (e) => {
       quiz.render();
     }
 
-    // DISPLAY SCORE IF THERE ARE NO MORE QUESTION IN CURRENT QUIZ CLASS
+    // DISPLAY SCORE IF THERE ARE NO MORE QUESTIONS IN CURRENT QUIZ CLASS
     else {
-      currScore.classList.remove(`${scoreColor}`);
-      if(quiz.score > 7) scoreColor = 'text-success';
-      else if(quiz.score < 7 && quiz.score >= 5) scoreColor = 'text-warning';
-      currScore.innerText = `You Scored ${quiz.score} / 10!`;
-      currScore.classList.add('h1', `${scoreColor}`);
-      playAgain.classList.remove('d-none');
+      quiz.endGame();
     }
   }
 
@@ -80,5 +70,5 @@ start.addEventListener('click', (e) => {
 
 playAgain.addEventListener('click', e => {
   e.preventDefault();
-  location.reload()
+  location.reload();
 })
