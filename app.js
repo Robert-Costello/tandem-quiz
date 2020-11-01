@@ -80,5 +80,3 @@ playAgain.addEventListener('click', (e) => {
   e.preventDefault();
   location.reload();
 });
-
-module.exports = {qList};

@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/Robert-Costello/tandem-quiz#readme",
   "devDependencies": {
-    "http-server": "^0.12.3",
     "chai": "^4.2.0",
-    "mocha": "^8.2.0"
+    "chai-fetch": "^0.3.1",
+    "http-server": "^0.12.3",
+    "mocha": "^8.2.0",
+    "mockttp": "^1.0.3"
   }
 }
