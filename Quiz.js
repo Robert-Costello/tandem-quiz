@@ -2,7 +2,6 @@ class Quiz {
   constructor(list) {
     this.score = 0;
     this.list = list;
-    this.score = 0;
     this.questions = [];
     this.correctAnswer = '';
   }
@@ -21,6 +20,7 @@ class Quiz {
       }
       // GRAB 10 QUESTIONS TO ASK
       this.questions.push(...data.slice(0, 10));
+      return this.questions;
     });
   }
 
@@ -69,3 +69,5 @@ class Quiz {
     questionWindow.classList.add('d-none');
   }
 }
+
+module.exports = Quiz;

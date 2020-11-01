@@ -35,8 +35,6 @@
 
 ---
 
----
-
 ### Clone Repository
 
     git clone https://github.com/Robert-Costello/tandem-quiz.git
@@ -45,3 +43,9 @@
 
     npm i
     npm start
+
+---
+
+### Run Tests
+
+    npm run test
