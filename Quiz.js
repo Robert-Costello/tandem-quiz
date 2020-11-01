@@ -56,11 +56,10 @@ class Quiz {
 
   endGame() {
     const grade = (quiz.score / 10) * 100;
-    // corrAns.classList.remove('h4', `${scoreColor}`);
+
     if (quiz.score > 7) scoreColor = 'text-success';
     else if (quiz.score <= 7 && quiz.score >= 5) scoreColor = 'text-warning';
-    // corrAns.innerText = `You Scored ${grade}%!`;
-    // corrAns.classList.add('h1', `${scoreColor}`);
+
     finalScore.classList.remove('d-none');
     finalScore.classList.add(`${scoreColor}`);
     finalScore.innerText = `You Scored ${grade}%!`;
