@@ -1,5 +1,7 @@
 ## Tandem Quiz
 
+## </br>
+
 ### Description
 
     Code Challenge for Tandem’s Apprenticeship Program for software engineers
@@ -33,12 +35,13 @@
 
 ---
 
-### Installation
-
-    npm install
-
 ---
 
-### Run
+### Clone Repository
 
+    git clone https://github.com/Robert-Costello/tandem-quiz.git
+
+### Run Locally
+
+    npm i
     npm start
