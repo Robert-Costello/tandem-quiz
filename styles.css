@@ -10,7 +10,7 @@
 
 #submit-ans {
   margin-top: 10px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .btn {
@@ -75,9 +75,8 @@ p {
   align-items: center;
 }
 
-
-.score {
+.corr-ans {
   margin: 30px auto;
-  opacity: .7;
-  color:#43d9be;
+  opacity: 0.7;
+  color: #43d9be;
 }

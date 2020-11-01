@@ -4,14 +4,22 @@ const choices = document.querySelector('.choices');
 const start = document.querySelector('.start');
 const submitAns = document.querySelector('.new-question');
 const p = document.querySelector('p');
-const currScore = document.querySelector('.score');
+const corrAns = document.querySelector('.corr-ans');
 const playAgain = document.querySelector('.play-again');
+const finalScore = document.querySelector('.final-score');
+
 let quiz;
 let scoreColor = 'text-danger';
 
 const newGame = () => {
   quiz = new Quiz(qList);
   quiz.getQs();
+};
+
+const showAnswer = () => {
+  corrAns.classList.remove('d-none');
+  corrAns.innerText = `The correct answer was: ${quiz.correctAnswer}`;
+  // setTimeout(() => (corrAns.innerText = ''), 2500);
 };
 
 newGame();
@@ -31,7 +39,7 @@ submitAns.addEventListener('submit', (e) => {
   // INCREMENT SCORE AND UPDATE UI IF SELECTED IS CORRECT
   else if (selected === quiz.correctAnswer.replace(/ /g, '-')) {
     quiz.score++;
-    currScore.innerText = `Correct Answers: ${quiz.score}`;
+    showAnswer();
     if (quiz.questions.length) {
       quiz.render();
     }
@@ -39,18 +47,24 @@ submitAns.addEventListener('submit', (e) => {
     // DISPLAY SCORE IF THERE ARE NO MORE QUESTIONS IN CURRENT QUIZ CLASS
     else {
       quiz.endGame();
+      // NEW LINE KEEP THE ELEMENTS IN POSITION WHILE REMOVING CORRECT ANSWER
+      setTimeout(() => (corrAns.innerText = '\n'), 2500);
     }
   }
 
   // UPDATE UI IF SELECTED IS INCORRECT
   else {
     if (quiz.questions.length) {
+      showAnswer();
       quiz.render();
     }
 
     // DISPLAY SCORE IF THERE ARE NO MORE QUESTIONS IN CURRENT QUIZ CLASS
     else {
+      showAnswer();
       quiz.endGame();
+
+      setTimeout(() => (corrAns.innerText = '\n'), 2500);
     }
   }
 });
@@ -60,7 +74,6 @@ start.addEventListener('click', (e) => {
   quiz.render();
   start.classList.add('d-none');
   p.classList.remove('d-none');
-  currScore.classList.remove('d-none');
 });
 
 playAgain.addEventListener('click', (e) => {
