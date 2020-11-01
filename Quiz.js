@@ -10,8 +10,7 @@ class Quiz {
   async getQs() {
     const response = await fetch('Apprentice_TandemFor400_Data.json');
     return response.json().then((data) => {
-      let qCount = 0,
-        index = data.length - 1;
+      let index = data.length - 1;
 
       // FISHER-YATES SHUFFLE QUESTIONS
       for (let index = data.length - 1; index > 0; index--) {
@@ -57,11 +56,14 @@ class Quiz {
 
   endGame() {
     const grade = (quiz.score / 10) * 100;
-    currScore.classList.remove('h4', `${scoreColor}`);
+    // corrAns.classList.remove('h4', `${scoreColor}`);
     if (quiz.score > 7) scoreColor = 'text-success';
     else if (quiz.score <= 7 && quiz.score >= 5) scoreColor = 'text-warning';
-    currScore.innerText = `You Scored ${grade}%!`;
-    currScore.classList.add('h1', `${scoreColor}`);
+    // corrAns.innerText = `You Scored ${grade}%!`;
+    // corrAns.classList.add('h1', `${scoreColor}`);
+    finalScore.classList.remove('d-none');
+    finalScore.classList.add(`${scoreColor}`);
+    finalScore.innerText = `You Scored ${grade}%!`;
     playAgain.classList.remove('d-none');
     submitAns.classList.add('d-none');
     questionWindow.classList.add('d-none');
