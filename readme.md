@@ -54,4 +54,8 @@
 
 ### Notes on implementation
 
-    The getQs method on the Quiz class fetches questions asynchronously to simulate real-world api implementation. The questions are then shuffled so that the user is served up a random selection of ten questions. Before rendering each question the answer options are shuffled so that they are displayed in random order. (all shuffling is a Fisher-Yates implementation) A nice future addition would be storing the user's stats (scores, number of quizes taken, averages) in local storage to be displayed later. If broken down by subject, a user could see how strong they are in specific areas, e.g. geography, computer science, history.
+    The getQs method on the Quiz class fetches questions asynchronously to simulate real-world api implementation. 
+    The questions are then shuffled so that the user is served up a random selection of ten questions. Before rendering 
+    each question the answer options are shuffled so that they are displayed in random order. (all shuffling is a Fisher-Yates implementation) 
+    A nice future addition would be storing the user's stats (scores, number of quizes taken, averages) in local storage to be displayed later. 
+    If broken down by subject, a user could see how strong they are in specific areas, e.g. geography, computer science, history.
