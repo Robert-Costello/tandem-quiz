@@ -2,9 +2,9 @@
   "name": "tandem_quiz",
   "version": "1.0.0",
   "description": "",
-  "main": "./client/app.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node Quiz.spec.js",
+    "test": "mocha || true",
     "start": "http-server"
   },
   "repository": {
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Robert-Costello/tandem-quiz#readme",
   "devDependencies": {
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0"
   }
 }
